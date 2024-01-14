@@ -139,5 +139,9 @@ unset __conda_setup
 alias open-thomas-server="ssh -NfL 12000:localhost:3000 thomas-server-rasp && ssh -NfL 8080:localhost:80 thomas-server-rasp && google-chrome http://localhost:8080 http://localhost:12000/d/e28b5e30-ef6f-4fcc-b682-b3a40865af6f/bms?orgId=1&from=now-3h&to=now"
 
 
+# go
 export PATH=$PATH:/usr/local/go/bin
 
+# fly
+export FLYCTL_INSTALL="/home/thomas/.fly"
+export PATH="$FLYCTL_INSTALL/bin:$PATH"
