@@ -1,0 +1,7 @@
+# ignore scripts log files
+scripts/log/*
+
+# ignore scripts backup files
+backup/*
+
+tmp/
