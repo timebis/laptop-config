@@ -34,8 +34,8 @@ fi
 log_message "Backing up current configuration files..."
 cp -v ~/.bashrc "$BACKUP_DIR/.bashrc_$CURRENT_DATETIME"
 cp -v ~/.bash_aliases "$BACKUP_DIR/.bash_aliases_$CURRENT_DATETIME"
-cp -v ~/.config/Code/User/settings.json "$BACKUP_DIR/settings.json_$CURRENT_DATETIME"
-cp -v ~/.config/Code/User/keybindings.json "$BACKUP_DIR/keybindings.json_$CURRENT_DATETIME"
+cp -v ~/.config/Code/User/settings.json "$BACKUP_DIR/settings_$CURRENT_DATETIME.json"
+cp -v ~/.config/Code/User/keybindings.json "$BACKUP_DIR/keybindings_$CURRENT_DATETIME.json"
 
 # Copy Bash configuration files to the home directory
 log_message "Updating Bash configuration..."
