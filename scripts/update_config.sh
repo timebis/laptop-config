@@ -1,7 +1,12 @@
 #!/bin/bash
 
-# Path to your repository
-REPO_DIR="$HOME/git/laptop-config"
+# Get the path of the current Git repository
+REPO_DIR=$(git rev-parse --show-toplevel)
+# Check if the current directory is a Git repository
+if [ -z "$REPO_DIR" ]; then
+    echo "Error: Current directory is not a Git repository."
+    exit 1
+fi
 
 # Backup directory within the repository
 BACKUP_DIR="$REPO_DIR/backup"
@@ -31,11 +36,28 @@ if [ ! -d "$BACKUP_DIR" ]; then
 fi
 
 # Backup current configuration files
+# Backup current configuration files
 log_message "Backing up current configuration files..."
 cp -v ~/.bashrc "$BACKUP_DIR/.bashrc_$CURRENT_DATETIME"
+if [ $? -ne 0 ]; then
+    log_error "Backup of .bashrc failed"
+    exit 1
+fi
 cp -v ~/.bash_aliases "$BACKUP_DIR/.bash_aliases_$CURRENT_DATETIME"
+if [ $? -ne 0 ]; then
+    log_error "Backup of .bash_aliases failed"
+    exit 1
+fi
 cp -v ~/.config/Code/User/settings.json "$BACKUP_DIR/settings_$CURRENT_DATETIME.json"
+if [ $? -ne 0 ]; then
+    log_error "Backup of settings.json failed"
+    exit 1
+fi
 cp -v ~/.config/Code/User/keybindings.json "$BACKUP_DIR/keybindings_$CURRENT_DATETIME.json"
+if [ $? -ne 0 ]; then
+    log_error "Backup of keybindings.json failed"
+    exit 1
+fi
 
 # Copy Bash configuration files to the home directory
 log_message "Updating Bash configuration..."
