@@ -1,22 +1,36 @@
-// Place your key bindings in this file to override the defaultsauto[]
-[
-    {
-        "key": "ctrl+[Period]",
-        "command": "editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
+{
+    "go.useLanguageServer": true,
+    "go.autocompleteUnimportedPackages": true,
+    "go.formatTool": "gofmt",
+    "editor.formatOnSave": true,
+    "go.testFlags": [
+        "-v"
+    ],
+    "explorer.decorations.badges": false,
+    "window.titleBarStyle": "custom",
+    "editor.minimap.size": "fill",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "explorer.confirmDragAndDrop": false,
+    "files.autoSaveDelay": 10000,
+    "files.autoSave": "afterDelay",
+    "diffEditor.ignoreTrimWhitespace": false,
+    "[python]": {
+        "editor.formatOnType": false,
+        "editor.defaultFormatter": "ms-python.black-formatter",
+        "editor.formatOnSave": true
     },
-    {
-        "key": "ctrl+shift+[Period]",
-        "command": "-editor.action.commentLine",
-        "when": "editorTextFocus && !editorReadonly"
-    },
-    {
-        "key": "ctrl+left",
-        "command": "workbench.action.navigateBack"
-    },
-    {
-        "key": "ctrl+right",
-        "command": "workbench.action.navigateForward",
-        "when": "canNavigateForward"
-    }
-]
+    "editor.renderWhitespace": "all",
+    "security.workspace.trust.untrustedFiles": "open",
+    "python.analysis.autoImportCompletions": true,
+    "python.analysis.completeFunctionParens": true,
+    "git.enableSmartCommit": true,
+    "flake8.args": [
+        "--max-line-length=120",
+        "--ignore=E402,F841,F401",
+        // "--ignore=E402,F841,F401,E302,E305",
+    ],
+    "black-formatter.args": [
+        "--line-length=130"
+    ],
+    "explorer.confirmDelete": false
+}
