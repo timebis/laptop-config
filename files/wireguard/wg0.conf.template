@@ -1,0 +1,16 @@
+[Interface]
+Address = 192.168.2.2/16
+Address = fd52:f680:1703::2/48
+SaveConfig = true
+PostUp = ip route add 192.168.1.0/24 dev wg0 metric 10;
+PostDown = ip route del 192.168.1.0/24 dev wg0 metric 10; ip -6 route del fe80::/64 dev wg0 metric 10;
+ListenPort = 47262
+FwMark = ${WG_FwMark}
+PrivateKey = ${WG_PRIVATE_KEY}
+
+[Peer]
+PublicKey = ${WG_PEER_PUBLIC_KEY}
+AllowedIPs = 0.0.0.0/0, ::/0
+Endpoint = ${WG_PEER_ENDPOINT}
+PersistentKeepalive = 30
+
