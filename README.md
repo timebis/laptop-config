@@ -1,3 +1,3 @@
 # laptop-config
 
-.env file is needed
+.env file is needed for wireguard config

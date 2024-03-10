@@ -35,36 +35,46 @@ if [ ! -d "$BACKUP_DIR" ]; then
     mkdir -p "$BACKUP_DIR"
 fi
 
-# Backup current configuration files
-# Backup current configuration files
+# Backup current configuration files (bahsrc, bash_aliases, VS Code settings, and VS Code keybindings)
 log_message "Backing up current configuration files..."
 cp -v ~/.bashrc "$BACKUP_DIR/.bashrc_$CURRENT_DATETIME"
 if [ $? -ne 0 ]; then
     log_error "Backup of .bashrc failed"
     exit 1
 fi
-cp -v ~/.bash_aliases "$BACKUP_DIR/.bash_aliases_$CURRENT_DATETIME"
-if [ $? -ne 0 ]; then
-    log_error "Backup of .bash_aliases failed"
-    exit 1
+
+if [ -f ~/.bash_aliases ]; then
+    cp -v ~/.bash_aliases "$BACKUP_DIR/.bash_aliases_$CURRENT_DATETIME"
+    if [ $? -ne 0 ]; then
+        log_error "Backup of .bash_aliases failed"
+        exit 1
+    fi
 fi
+
+if [ -f ~/.bash_aliases ]; then
 cp -v ~/.config/Code/User/settings.json "$BACKUP_DIR/settings_$CURRENT_DATETIME.json"
 if [ $? -ne 0 ]; then
     log_error "Backup of settings.json failed"
     exit 1
+    fi
 fi
-cp -v ~/.config/Code/User/keybindings.json "$BACKUP_DIR/keybindings_$CURRENT_DATETIME.json"
-if [ $? -ne 0 ]; then
-    log_error "Backup of keybindings.json failed"
-    exit 1
+
+if [ -f ~/.config/Code/User/keybindings.json ]; then
+    cp -v ~/.config/Code/User/keybindings.json "$BACKUP_DIR/keybindings_$CURRENT_DATETIME.json"
+    if [ $? -ne 0 ]; then
+        log_error "Backup of keybindings.json failed"
+        exit 1
+    fi  
 fi
 
 # Copy Bash configuration files to the home directory
 log_message "Updating Bash configuration..."
-cp -v files/bash/.* ~/
+# cp -v files/bash/.* ~/
+# cp -v files/bash/.bashrc ~/
+cp -v files/bash/.bash_aliases ~/
 
 # Set appropriate permissions for bash files
-chmod 644 ~/.bashrc
+# chmod 644 ~/.bashrc
 chmod 644 ~/.bash_aliases
 
 # Copy VS Code configuration files
