@@ -137,6 +137,7 @@ alias open-thomas-server="ssh -NfL 12000:localhost:3000 thomas-server-rasp && ss
 
 # go
 export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:~/go/bin
 
 # fly
 export FLYCTL_INSTALL="/home/thomas/.fly"
